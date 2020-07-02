@@ -24,13 +24,13 @@
 </p>
 
 <script type="text/javascript">
-$("#identifiant").load("file.txt");
+$("#identifiant").load("exercices/ex000001.txt");
 
 var mesExercices = new Array();
 
 var maVariable;
 
-$.get('file.txt', function (response) {
+$.get('exercices/ex000001.txt', function (response) {
     maVariable = response;
     console.log(maVariable);
 });
