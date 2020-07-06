@@ -20,12 +20,13 @@
 <input type="text" value="monNumero" v-model="monNumero" id="monNumero">
 
 
-<a href="#" onclick="charger()" @click="charger2(monNumero)">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
+<a href="#" onclick="charger()" @click="charger2(monNumero)"> Charger l'exercice</a>
 </p>
-</div>
+
 
 <div v-for="item in mesExercices">
 	{{item}}
+</div>
 </div>
 
 <script type="text/javascript">
@@ -57,6 +58,7 @@ function charger(){
 	}
 }
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
   	const app = new Vue({
@@ -69,7 +71,7 @@ function charger(){
     		charger2(monNumero){
     			this.mesExercices[monNumero] = mesExercices[monNumero];
     			console.log(this.mesExercices[monNumero]);
-    		}
+    		},
     	}
 	})
   </script>
