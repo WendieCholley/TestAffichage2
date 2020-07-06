@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="app">
-<h3>Premier test : </h3>
+<h3>Premier test r: </h3>
 <p>
 	Chargement d'un fichier html externe dans un div avec load : 
 	<div id="identifiant"></div>
@@ -63,7 +63,7 @@ function charger(){
     	methods: {
     		charger2(){
     			for(var n in mesExercices){
-    				this.mesExercices[n] = mesExercices;
+    				this.mesExercices[n] = mesExercices[n];
     			}
     			console.log(this.mesExercices[4]);
     		}
