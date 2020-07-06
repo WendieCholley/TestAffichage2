@@ -322,12 +322,10 @@ De plus, l'affichage des exercices ne disparaît pas lorsqu'on clique sur "reven
       </div>
 
       <!-- Affichage des exercices -->
-      <div class="col s5">        
-        <ul class="collection with-header" style="height: 800px; width: 100%; overflow: scroll; overflow: auto">
-          <li class="collection-item" v-for="item in afficheEx" style="display: flex; height: 100%">
+      <div class="col s5">
+          <div class="collection-item" v-for="item in afficheEx">
           {{item}}            
-          </li>
-        </ul>
+          </div>
         <!-- Pour réduire l'affichage des exercices à droite, trouver comment réduire par sélection
         <ul class="collection with-header" style="height: 600px; width: 100%; overflow: scroll; overflow: auto">
           <li class="collection-item" v-for="item in afficheEx" style="display: flex; height: auto">
@@ -574,6 +572,8 @@ function charger(n){
             charger(numExo);
             this.mesExercices[numExo] = mesExercices[numExo];
             this.afficheEx.push(this.mesExercices[numExo]);
+            console.log(this.mesExercices[numExo]);
+            console.log(this.afficheEx[numExo]);
           }
         }
       }
@@ -589,6 +589,7 @@ function charger(n){
               charger(numExo);
               this.mesExercices[numExo] = mesExercices[numExo];
               this.afficheEx.push(this.mesExercices[numExo]);
+              console.log(this.mesExercices[numExo]);
             }
           }
         }
