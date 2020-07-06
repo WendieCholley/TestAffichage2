@@ -20,7 +20,7 @@
 <input type="text" value="3" id="monNumero">
 
 
-<a href="#" onclick="charger()">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
+<a href="#" onclick="charger()" @click="charger()">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
 </p>
 </div>
 <script type="text/javascript">
@@ -58,21 +58,12 @@ function charger(){
     	el: ".app",
     	data: {
     		monNumero: '',
-    		mesExercices: new Array,
+    		mesExercices: [],
     	},
     	methods: {
     		charger2(){
-    			var n = this.monNumero;
-    			var texteEx;
-    			if(this.mesExercices[this.monNumero]==undefined || this.mesExercices[this.monNumero == '']){
-    				var URL="exercices/ex00000"+n+".txt";
-    				console.log("on charge l'exercice"+n+", son adresse est "+URL);
-					$.get(URL, function (response) {
-	    				this.mesExercices[n] = response;
-	    				console.log("chargement de l'exercice "+n+" terminé");
-	    				console.log(response);
-	    				console.log(this.mesExercices[n]);
-	    			});
+    			for(var n in mesExercices){
+    				this.mesExercices[n] = mesExercices;
     			}
     		}
     	}
