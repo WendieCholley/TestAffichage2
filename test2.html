@@ -17,12 +17,17 @@
 
 <p>
 	Remplissage d'un tableau de variables avec des fichiers externes spécifiés : 
-<input type="text" value="3" id="monNumero">
+<input type="text" value="monNumero" v-model="monNumero" id="monNumero">
 
 
-<a href="#" onclick="charger()" @click="charger2()">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
+<a href="#" onclick="charger()" @click="charger2(monNumero)">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
 </p>
 </div>
+
+<div v-for="item in mesExercices">
+	{{item}}
+</div>
+
 <script type="text/javascript">
 $("#identifiant").load("file.txt");
 
@@ -61,13 +66,9 @@ function charger(){
     		mesExercices: [],
     	},
     	methods: {
-    		charger2(){
-    			for(var n in mesExercices){
-    				this.mesExercices[n] = mesExercices[n];
-    			}
-    			console.log(this.mesExercices[4]);
-    			console.log(this.mesExercices[3]);
-    			console.log(mesExercices[3]);
+    		charger2(monNumero){
+    			this.mesExercices[monNumero] = mesExercices[monNumero];
+    			console.log(this.mesExercices[monNumero]);
     		}
     	}
 	})
