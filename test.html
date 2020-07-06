@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="app">
-<h3>Premier test r: </h3>
+<h3>Premier test : </h3>
 <p>
 	Chargement d'un fichier html externe dans un div avec load : 
 	<div id="identifiant"></div>
@@ -39,19 +39,21 @@
     	el: ".app",
     	data: {
     		monNumero: '',
-    		mesExercices: [],
+    		mesExercices: new Array,
     	},
     	methods: {
     		charger2(){
     			var n = this.monNumero;
+    			var texteEx;
     			if(this.mesExercices[this.monNumero]==undefined || this.mesExercices[this.monNumero == '']){
     				var URL="exercices/ex00000"+n+".txt";
     				console.log("on charge l'exercice"+n+", son adresse est "+URL);
 					$.get(URL, function (response) {
-	    				this.mesExercices[n] = response;
+	    				texteEx = response;
 	    				console.log("chargement de l'exercice "+n+" terminé");
 	    				console.log(this.mesExercices[n]);
 	    			});
+	    			this.mesExercices[n] = texteEx;
     			}
     		}
     	}
