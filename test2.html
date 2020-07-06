@@ -8,21 +8,15 @@
 </head>
 <body>
 <div class="app">
-<h3>Premier test : </h3>
-<p>
-	Chargement d'un fichier html externe dans un div avec load : 
-	<div id="identifiant"></div>
-</p>
-<h3>Deuxième test : </h3>
+
+<h3>Test : </h3>
 
 <p>
 	Remplissage d'un tableau de variables avec des fichiers externes spécifiés : 
 <input type="text" value="monNumero" v-model="monNumero" id="monNumero">
 
-
 <a href="#" onclick="charger()" @click="charger2(monNumero)"> Charger l'exercice</a>
 </p>
-
 
 <div v-for="item in mesExercices">
 	{{item}}
@@ -34,18 +28,8 @@
 
 </div>
 <script type="text/javascript">
-$("#identifiant").load("file.txt");
 
 var mesExercices = new Array();
-
-var maVariable;
-
-$.get('file.txt', function (response) {
-    maVariable = response;
-    console.log(maVariable);
-});
-
-
 
 function charger(){
 	var n=document.getElementById("monNumero").value;
@@ -69,7 +53,7 @@ function charger(){
     	el: ".app",
     	data: {
     		monNumero: '',
-    		mesExercices: ['truc'],
+    		mesExercices: [],
     	},
     	methods: {
     		charger2(monNumero){
