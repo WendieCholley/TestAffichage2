@@ -19,41 +19,16 @@
 	Remplissage d'un tableau de variables avec des fichiers externes spécifiés : 
 <input type="text" value="monNumero" v-model="monNumero" id="monNumero">
 
-{{monNumero}}
-
 <a href="#" @click="charger2()">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
 </p>
 
-<div id=""></div>
+<ul>
+<li v-for="exercice in mesExercices">
+	{{exercice}}
+</li>
+</ul>
 </div>
-<script type="text/javascript">
-$("#identifiant").load("file.txt");
 
-var mesExercices = new Array();
-
-var maVariable;
-
-$.get('file.txt', function (response) {
-    maVariable = response;
-    console.log(maVariable);
-});
-
-
-
-function charger(){
-	var n=document.getElementById("monNumero").value;
-
-	// on charge l'exo mais uniquement s'il n'est pas encore chargé :
-	if(mesExercices[n]==undefined || mesExercices[n]==""){
-		var URL="exercices/ex00000"+n+".txt";
-		console.log("on charge l'exercice"+n+", son adresse est "+URL);
-		$.get(URL, function (response) {
-	    	mesExercices[n] = response;
-	    	console.log("chargement de l'exercice "+n+" terminé");
-	    	console.log(mesExercices[n]);
-		});
-	}
-}
 </script>
 
   <!-- VueJS -->
@@ -72,11 +47,11 @@ function charger(){
     			if(this.mesExercices[this.monNumero]==undefined || this.mesExercices[this.monNumero == '']){
     				var URL="exercices/ex00000"+n+".txt";
     				console.log("on charge l'exercice"+n+", son adresse est "+URL);
-    				$.get(URL, function (response) {
+					$.get(URL, function (response) {
 	    				mesExercices[n] = response;
 	    				console.log("chargement de l'exercice "+n+" terminé");
 	    				console.log(mesExercices[n]);
-					});
+	    			});
     			}
     		}
     	}
