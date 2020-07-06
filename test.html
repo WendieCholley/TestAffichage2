@@ -7,8 +7,8 @@
 
 </head>
 <body>
-
-<h3>Premier test : </h3>
+<div class="app">
+<h3>Premier test r: </h3>
 <p>
 	Chargement d'un fichier html externe dans un div avec load : 
 	<div id="identifiant"></div>
@@ -17,42 +17,47 @@
 
 <p>
 	Remplissage d'un tableau de variables avec des fichiers externes spécifiés : 
-<input type="text" value="3" id="monNumero">
+<input type="text" value="monNumero" v-model="monNumero" id="monNumero">
 
-
-<a href="#" onclick="charger()">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
+<a href="#" @click="charger2()">Charger l'exercice</a> (numéros de 1 à 5 uniquement)
 </p>
 
-<script type="text/javascript">
-$("#identifiant").load("file.txt");
+<ul>
+<li v-for="exercice in mesExercices">
+	{{exercice}}
+</li>
+</ul>
+</div>
 
-var mesExercices = new Array();
-
-var maVariable;
-
-$.get('file.txt', function (response) {
-    maVariable = response;
-    console.log(maVariable);
-});
-
-
-
-function charger(){
-	var n=document.getElementById("monNumero").value;
-
-	// on charge l'exo mais uniquement s'il n'est pas encore chargé :
-	if(mesExercices[n]==undefined || mesExercices[n]==""){
-		var URL="exercices/ex00000"+n+".txt";
-		console.log("on charge l'exercice"+n+", son adresse est "+URL);
-		$.get(URL, function (response) {
-	    	mesExercices[n] = response;
-	    	console.log("chargement de l'exercice "+n+" terminé");
-	    	console.log(mesExercices[n]);
-		});
-	}
-}
 </script>
 
+  <!-- VueJS -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+  <script>
+  	const app = new Vue({
+    	el: ".app",
+    	data: {
+    		monNumero: '',
+    		mesExercices: new Array,
+    	},
+    	methods: {
+    		charger2(){
+    			var n = this.monNumero;
+    			var texteEx;
+    			if(this.mesExercices[this.monNumero]==undefined || this.mesExercices[this.monNumero == '']){
+    				var URL="exercices/ex00000"+n+".txt";
+    				console.log("on charge l'exercice"+n+", son adresse est "+URL);
+					$.get(URL, function (response) {
+	    				this.mesExercices[n] = response;
+	    				console.log("chargement de l'exercice "+n+" terminé");
+	    				console.log(response);
+	    				console.log(this.mesExercices[n]);
+	    			});
+    			}
+    		}
+    	}
+	})
+  </script>
 </body>
 </html>
